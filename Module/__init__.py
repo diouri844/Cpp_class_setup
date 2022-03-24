@@ -17,14 +17,23 @@ def clear_window_widget(root):
     return
 
 def add_new_attr(root):
-    root.window.titel = Label(root.window, text="Ajouté attribute ", font="Bite-Chocolate 18",
-        bg=root.bg_color, fg=root.fg_color, bd=0)
-
-    
+    root.window.titel = Label(root.window, text="Ajouté attribute ", font="Bite-Chocolate 18 underline",
+                            bg=root.bg_color, fg=root.fg_color, bd=0)
+    my_image = Image.open('Images/img_textBox0.png')
+    my_icon = ImageTk.PhotoImage(my_image)
+    root.window.canva_class_name = Label(root.window, image=my_icon, height=40, width=238, bg=root.bg_color)
+    root.window.canva_class_name.image = my_icon
+    root.window.label_class_name = Label(root.window, text="Nom ", bd=0, fg=root.fg_color, bg=root.bg_secondary,
+            font="Bite-Chocolate 11")
+    root.window.entry_class_name = Entry(root.window, highlightthickness=0, 
+            bd=0, bg=root.bg_secondary, textvariable=root.attr_name, fg=root.fg_secondary)
+    #default focus :
+    root.window.entry_class_name.focus()
     # add to window : 
     root.window.titel.place(relx=0.35, rely=0.1)
-
-
+    root.window.label_class_name.place(relx=0.37, rely=0.21)
+    root.window.canva_class_name.place(relx=0.35, rely=0.2)
+    root.window.entry_class_name.place(relx=0.385, rely=0.24, width = 180.0, height=17)
 
     return
 
@@ -38,7 +47,6 @@ def next_step(root):
             my_heder_file = open(root.class_path.get()+"/"+root.class_name.get()+".hpp", mode="w")
             # create body of prototype file : 
             my_cpp_file = open(root.class_path.get()+"/"+root.class_name.get()+".cpp", mode="w")
-            my_cpp_file.close()
         except Exception as e:
             messagebox.showerror("Erreur",e)
         finally:

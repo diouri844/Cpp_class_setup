@@ -9,9 +9,11 @@ class Class_Editeur():
         self.window = Tk()
         self.bg_color = "white"
         self.fg_color = "#3479D7"
-        self.bg_secondary = "#ececec"
+        self.fg_secondary = "black"
+        self.bg_secondary = "#eee"
         self.class_name = StringVar()
         self.class_path = StringVar()
+        self.attr_name = StringVar()
         self.window.geometry("400x550")
         self.window.config(background=self.bg_color)
         self.window.resizable(0, 0)
@@ -27,14 +29,14 @@ class Class_Editeur():
         self.window.label_class_name = Label(self.window, text="Nom ", bd=0, fg=self.fg_color, bg=self.bg_secondary,
             font="Bite-Chocolate 11")
         self.window.entry_class_name = Entry(self.window, highlightthickness=0, 
-            bd=0, bg=self.bg_secondary, textvariable=self.class_name, fg=self.fg_color)
+            bd=0, bg=self.bg_secondary, textvariable=self.class_name, fg=self.fg_secondary)
         
         self.window.canva_class_path = Label(self.window, image=my_icon, height=40, width=238, bg=self.bg_color)
         self.window.canva_class_path.image = my_icon
         self.window.label_class_path = Label(self.window, text="Emplacement ", bd=0, fg=self.fg_color, bg=self.bg_secondary,
             font="Bite-Chocolate 11")
         self.window.entry_class_path = Entry(self.window, highlightthickness=0, 
-            bd=0, bg=self.bg_secondary, textvariable=self.class_path, fg=self.fg_color)
+            bd=0, bg=self.bg_secondary, textvariable=self.class_path, fg=self.fg_secondary)
         self.window.btn_select_class_folder = Button(self.window,
             bg=self.bg_color, fg=self.fg_color, bd=0, text="Ouvrir", font="Bite-Chocolate 8 underline",
             command=lambda:get_output_folder(self))
